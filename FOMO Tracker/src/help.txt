@@ -1,0 +1,15 @@
+HELP 
+
+help:
+
+"Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+Expression              Action/Description
+---------
+[Symbol][Symbol]        Pair two asset values to receive relevent price."
+clear                   clears the previous user input 

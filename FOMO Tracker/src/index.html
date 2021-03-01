@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FOMO Tracker io</title>
+    </head>
+    <body class="terminal">
+            <!--Container Div-->        
+            <div class="terminal" id="tracker">
+
+                <p>
+                    ** fomotracker client v0.1 build 7481293 **
+
+                </p> 
+                <p>
+                    loading....
+                </p> 
+                <p>
+                    getting viTalik on the line...
+                    [========================================] 100%
+                    done.
+                </p> 
+                <p>
+                    putting him to sleep...
+                    [========================================] 100%
+                    done.
+                </p>
+                <p>
+                    dumping it again...
+                    [========================================] 100%
+                    done.
+                </p>
+                <p>
+                    installing korea fud...
+                    [================                        ] 33%
+                    done.
+                </p>
+                <p">
+                    Enter digital asset to assess$
+                </p>
+            </div>
+            <p id="foo">
+
+            </p>
+            <form onsubmit="DirectUserCommand()" class="terminal">
+                <input button="text" id="userInput" > 
+            </form>
+
+    </body>
+</html>
+
+<script>
+
+function FetchPriceData(userInput){
+//Call to convert to uppercase
+  return data = fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${userInput}`)
+    .then(response => response.json())
+    .then(item => {
+
+        let symbol = document.createElement("p");
+        let price = document.createElement("p");  
+        symbol.innerHTML = item.symbol;
+        price.innerHTML = item.price;
+        console.log(price);
+        foo.appendChild(symbol);
+        symbol.appendChild(price);
+
+        document.getElementById("userInput").value = "";   
+    }
+
+               
+    );  
+}
+
+//Receives user input and directs it elsewhere
+function DirectUserCommand(e){
+    event.preventDefault();
+
+    var foo = document.getElementById("foo");
+    var buffer = "";
+    var userInput = document.getElementById("userInput").value;
+
+    let element = document.createElement("p");
+     element.innerHTML = userInput;  
+     foo.appendChild(element);
+
+    switch(userInput){
+        case "help":
+        GiveUserHelpCommands();
+            break;
+        case "clear":
+        ClearUserHerstory();
+            break;
+        default: 
+        FetchPriceData(userInput);    
+    }
+
+    document.getElementById("userInput").value = "";    
+
+}
+
+//Update help cmds
+function GiveUserHelpCommands(){
+
+    var helpCmds = "Type `help' to see this list. \n" +
+                    "Type help name to find out more about the function name. \n" +
+                    "Use info bash to find out more about the shell in general.\n" + 
+                    "Use man -k or info' to find out more about commands not in this list. \n" +
+                    "A star (*) next to a name means that the command is disabled. \n" +
+                    "Expression              Action/Description \n" +
+                   " --------- [Symbol][Symbol]        Pair two asset values to receive relevent price.";
+    
+     let element = document.createElement("p");
+     element.innerHTML = helpCmds;  
+     foo.appendChild(element);
+        
+}
+//Update clearuserherstory to clear the loading screen 
+function ClearUserHerstory(){
+    foo.innerHTML = "";
+    tracker.innerHTML = "";
+}
+
+</script>
+
+<style>
+
+.terminal{
+    color:#66ff00;
+    background-color: black;
+    font-family: monospace;
+}
+
+h1{
+    color:#66ff00;
+    
+}
+
+#userInput{
+    color:#66ff00;
+    background-color: black;
+    border: none;
+    outline: none;
+}
+
+
+</style>
